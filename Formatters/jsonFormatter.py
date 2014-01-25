@@ -11,8 +11,8 @@ class JsonformatCommand(sublime_plugin.TextCommand):
 			newlines= []
 			for line in lines:
 				jsonLine = json.loads(line)
-				if 'stacktrace' in jsonLine.keys():
-					content = jsonLine['timestamp']+": "+jsonLine['message'] + ", STACKTRACE:"+ jsonLine['stacktrace']+ "\n"
+				if 'exception' in jsonLine.keys():
+					content = jsonLine['timestamp']+": "+jsonLine['message'] + ", STACKTRACE:"+ str(jsonLine['exception'])+ "\n"
 				else:
 					content = jsonLine['timestamp']+" : "+jsonLine['message'] + "\n"
 				newlines.append(content)
